@@ -19,6 +19,9 @@
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QLCDNumber" name="lcd">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(161, 236, 143);</string>
+        </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
         </property>

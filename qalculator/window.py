@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'window.ui'
 #
-# Created: Sat Jul  1 00:07:15 2017
+# Created: Sat Jul  1 10:25:39 2017
 #      by: PyQt4 UI code generator 4.11.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -34,6 +34,7 @@ class Ui_MainWindow(object):
         self.verticalLayout = QtGui.QVBoxLayout()
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.lcd = QtGui.QLCDNumber(self.centralwidget)
+        self.lcd.setStyleSheet(_fromUtf8("background-color: rgb(161, 236, 143);"))
         self.lcd.setFrameShape(QtGui.QFrame.Panel)
         self.lcd.setFrameShadow(QtGui.QFrame.Sunken)
         self.lcd.setLineWidth(2)
