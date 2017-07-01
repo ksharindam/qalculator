@@ -1,5 +1,5 @@
 Qalculator
-==============
+==========
 A simple Calculator written in PyQt4
 
 **Dependency** = python2.7, python-qt4 

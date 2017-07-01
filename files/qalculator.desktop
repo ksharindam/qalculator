@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Qalculator
+Comment=Simple Calculator
+Exec=qalculator
+Icon=qalculator
+Categories= Education;
+Terminal=false
+StartupNotify=false
