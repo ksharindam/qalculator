@@ -1,7 +1,14 @@
 #!/usr/bin/env python
-import sys
+import sys, re
 from PyQt4 import QtCore, QtGui
 from window import Ui_MainWindow
+
+reg_number = re.compile('[\d]*([.][\d]*)?')
+
+def toFloat(matchobj):
+    num = matchobj.group()
+    if '.' not in num: num = num+'.0'
+    return num
 
 class Calc(QtGui.QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -36,7 +43,8 @@ class Calc(QtGui.QMainWindow, Ui_MainWindow):
         self.addAction(self.quitAction)
 
     def equalsClicked(self):
-        self.lcd.display(eval(str(self.lineEdit.text())))
+        expr = reg_number.sub(toFloat, str(self.lineEdit.text()))
+        self.lcd.display(eval(expr))
 
     def clearAll(self):
         self.lcd.display(0)
