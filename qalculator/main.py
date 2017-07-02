@@ -3,9 +3,17 @@ import sys, re
 from PyQt4 import QtCore, QtGui
 from window import Ui_MainWindow
 
-reg_number = re.compile('[\d]*([.][\d]*)?')
+reg_bracket = re.compile('(\d[(])|([)]\d)')
+
+def addMultSign(matchobj):
+    ''' inserts * sign between num and bracket. e.g - Converts '7(' to '7*(' '''
+    expr = matchobj.group()
+    return expr[0] + '*' + expr[1]
+
+reg_number = re.compile('[\d]+([.][\d]+)?')
 
 def toFloat(matchobj):
+    ''' Converts all integers to float in re match object '''
     num = matchobj.group()
     if '.' not in num: num = num+'.0'
     return num
@@ -42,8 +50,15 @@ class Calc(QtGui.QMainWindow, Ui_MainWindow):
         self.lineEdit.setText(text)
 
     def equalsClicked(self):
+        # Convert integers to float before evaluation to improve accuracy
         expr = reg_number.sub(toFloat, str(self.lineEdit.text()))
-        self.lcd.display(eval(expr))
+        expr = reg_bracket.sub(addMultSign, expr)
+        print expr
+        try:
+            ans = eval(expr)
+            self.lcd.display(ans)
+        except:
+            self.lcd.display('E')
 
     def clearAll(self):
         self.lcd.display(0)
