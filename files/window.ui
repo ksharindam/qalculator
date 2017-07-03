@@ -55,7 +55,7 @@
          <widget class="QPushButton" name="minus">
           <property name="font">
            <font>
-            <pointsize>21</pointsize>
+            <pointsize>22</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -75,7 +75,7 @@
          <widget class="QPushButton" name="multiply">
           <property name="font">
            <font>
-            <pointsize>21</pointsize>
+            <pointsize>22</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -95,7 +95,7 @@
          <widget class="QPushButton" name="b2">
           <property name="font">
            <font>
-            <pointsize>21</pointsize>
+            <pointsize>22</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -115,7 +115,7 @@
          <widget class="QPushButton" name="b1">
           <property name="font">
            <font>
-            <pointsize>21</pointsize>
+            <pointsize>22</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -135,7 +135,7 @@
          <widget class="QPushButton" name="b5">
           <property name="font">
            <font>
-            <pointsize>21</pointsize>
+            <pointsize>22</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -155,7 +155,7 @@
          <widget class="QPushButton" name="b3">
           <property name="font">
            <font>
-            <pointsize>21</pointsize>
+            <pointsize>22</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -175,7 +175,7 @@
          <widget class="QPushButton" name="b6">
           <property name="font">
            <font>
-            <pointsize>21</pointsize>
+            <pointsize>22</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -195,7 +195,7 @@
          <widget class="QPushButton" name="b9">
           <property name="font">
            <font>
-            <pointsize>21</pointsize>
+            <pointsize>22</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -215,7 +215,7 @@
          <widget class="QPushButton" name="b4">
           <property name="font">
            <font>
-            <pointsize>21</pointsize>
+            <pointsize>22</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -235,7 +235,7 @@
          <widget class="QPushButton" name="divide">
           <property name="font">
            <font>
-            <pointsize>21</pointsize>
+            <pointsize>22</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -255,7 +255,7 @@
          <widget class="QPushButton" name="b8">
           <property name="font">
            <font>
-            <pointsize>21</pointsize>
+            <pointsize>22</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -275,7 +275,7 @@
          <widget class="QPushButton" name="b7">
           <property name="font">
            <font>
-            <pointsize>21</pointsize>
+            <pointsize>22</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -295,7 +295,7 @@
          <widget class="QPushButton" name="plus">
           <property name="font">
            <font>
-            <pointsize>21</pointsize>
+            <pointsize>22</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -362,47 +362,7 @@
           </property>
          </widget>
         </item>
-        <item row="4" column="0">
-         <widget class="QPushButton" name="b0">
-          <property name="font">
-           <font>
-            <pointsize>21</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="text">
-           <string>0</string>
-          </property>
-          <property name="shortcut">
-           <string>0</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <widget class="QPushButton" name="point">
-          <property name="font">
-           <font>
-            <pointsize>21</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="text">
-           <string>.</string>
-          </property>
-          <property name="shortcut">
-           <string>.</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="2" colspan="2">
+        <item row="4" column="3">
          <widget class="QPushButton" name="equals">
           <property name="font">
            <font>
@@ -416,6 +376,60 @@
           </property>
           <property name="shortcut">
            <string>=</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="2">
+         <widget class="QPushButton" name="point">
+          <property name="font">
+           <font>
+            <pointsize>22</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>.</string>
+          </property>
+          <property name="shortcut">
+           <string>.</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QPushButton" name="b0">
+          <property name="font">
+           <font>
+            <pointsize>22</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="shortcut">
+           <string>0</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QPushButton" name="root">
+          <property name="font">
+           <font>
+            <pointsize>22</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>√x</string>
           </property>
          </widget>
         </item>

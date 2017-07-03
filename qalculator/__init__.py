@@ -8,7 +8,7 @@ Debian Dependency = python-qt4
 
 Description = A simple Calculator with LCD Display
 Changes :
-        Inserts multiplication sign between num and bracket.
+        Sq.Root function added.
 ...........................................................................
 |   Copyright (C) 2017 Arindam Chaudhuri <ksharindam@gmail.com>            |
 |                                                                          |
@@ -29,4 +29,4 @@ Changes :
 # TODO: 
 # FIXME : 
 
-__version__ = '1.3'
+__version__ = '1.4'
