@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'window.ui'
 #
-# Created: Sun Jul  2 22:44:31 2017
+# Created: Tue Jul  4 12:00:15 2017
 #      by: PyQt4 UI code generator 4.11.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(380, 388)
+        MainWindow.resize(360, 379)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.horizontalLayout = QtGui.QHBoxLayout(self.centralwidget)
