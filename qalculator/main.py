@@ -15,16 +15,18 @@ def subSqrt(matchobj):
 reg_bracket = re.compile('(\d([(]|(sqrt)))|([)]\d)')
 
 def addMultSign(matchobj):
-    ''' inserts * sign between num and bracket. e.g - Converts '7(' to '7*(' '''
+    ''' inserts * sign between num and bracket. e.g - Converts '7(' to '7*(' and 2√3 to 2*√3'''
     expr = matchobj.group()
     return expr[0] + '*' + expr[1:]
 
-reg_number = re.compile('[\d]+([.][\d]+)?')
+reg_number = re.compile('([\d]+([.][\d]+)?)|([.][\d]+)')
 
 def toFloat(matchobj):
     ''' Converts all integers to float in re match object '''
     num = matchobj.group()
     if '.' not in num: num = num+'.0'
+    elif num.startswith('.'):
+        num = '0'+num
     return num
 
 class Calc(QtGui.QMainWindow, Ui_MainWindow):
@@ -60,11 +62,11 @@ class Calc(QtGui.QMainWindow, Ui_MainWindow):
 
     def equalsClicked(self):
         expr = unicode(self.lineEdit.text()).replace(unicode(utf8('√')), 'sqrt')
-        expr = reg_sqrt.sub(subSqrt, expr)
-        expr = reg_bracket.sub(addMultSign, expr)
         # Convert integers to float before evaluation to improve accuracy
         expr = reg_number.sub(toFloat, expr)
-        #print expr
+        expr = reg_sqrt.sub(subSqrt, expr)
+        expr = reg_bracket.sub(addMultSign, expr)
+        print expr
         try:
             ans = eval(expr)
             self.lcd.display(ans)
