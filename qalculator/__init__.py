@@ -8,8 +8,8 @@ Debian Dependency = python-qt4
 
 Description = A simple Calculator with LCD Display
 Changes :
-        Default LCD height reduced.
-        Sq.Root function added.
+        Calculates value when Enter is pressed.
+        
 ...........................................................................
 |   Copyright (C) 2017 Arindam Chaudhuri <ksharindam@gmail.com>            |
 |                                                                          |
@@ -30,4 +30,4 @@ Changes :
 # TODO: 
 # FIXME : 
 
-__version__ = '1.4.2'
+__version__ = '1.4.3'
