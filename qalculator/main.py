@@ -35,6 +35,8 @@ class Calc(QtGui.QMainWindow, Ui_MainWindow):
         QtGui.QMainWindow.__init__(self)
         self.setupUi(self)
         self.initUi()
+        self.clear_text = False # Clears text box after equals is pressed.
+        self.ans = ''
 
     def initUi(self):
         self.btnGrp = QtGui.QButtonGroup(self)
@@ -53,6 +55,12 @@ class Calc(QtGui.QMainWindow, Ui_MainWindow):
         self.equalsAction.setShortcut('Enter')
         self.equalsAction.triggered.connect(self.equalsClicked)
         self.addAction(self.equalsAction)
+
+        self.insertAnsAction = QtGui.QAction(self)
+        self.insertAnsAction.setShortcut('A')
+        self.insertAnsAction.triggered.connect(self.insertAns)
+        self.addAction(self.insertAnsAction)
+
         self.quitAction = QtGui.QAction(self)
         self.quitAction.setShortcut('Esc')
         self.quitAction.triggered.connect(self.close)
@@ -60,9 +68,8 @@ class Calc(QtGui.QMainWindow, Ui_MainWindow):
 
     def onBtnClick(self, btn):
         btnId = self.btnGrp.id(btn)
-        char = self.chars[abs(btnId)-2]
-        text = self.lineEdit.text() + utf8(char)
-        self.lineEdit.setText(text)
+        char = utf8( self.chars[abs(btnId)-2] )
+        self.insertText(char)
 
     def equalsClicked(self):
         expr = unicode(self.lineEdit.text()).replace(unicode(utf8('√')), 'sqrt')
@@ -72,10 +79,22 @@ class Calc(QtGui.QMainWindow, Ui_MainWindow):
         expr = reg_bracket.sub(addMultSign, expr)
         print expr
         try:
-            ans = eval(expr)
-            self.lcd.display(ans)
+            self.ans = eval(expr)
+            self.lcd.display(self.ans)
+            self.clear_text = True
         except:
             self.lcd.display('E')
+
+    def insertAns(self):
+        self.insertText(str(self.ans))
+
+    def insertText(self, text):
+        if self.clear_text :
+            self.lineEdit.setText(text)
+            self.clear_text = False
+        else:
+            self.lineEdit.insert(text)
+
 
     def clearAll(self):
         self.lcd.display(0)

@@ -8,7 +8,7 @@ Debian Dependency = python-qt4
 
 Description = A simple Calculator with LCD Display
 Changes :
-        Calculates value when Enter is pressed.
+        Now it can remember and insert previous answer
         
 ...........................................................................
 |   Copyright (C) 2017 Arindam Chaudhuri <ksharindam@gmail.com>            |
@@ -30,4 +30,4 @@ Changes :
 # TODO: 
 # FIXME : 
 
-__version__ = '1.4.3'
+__version__ = '1.4.4'
