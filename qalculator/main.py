@@ -52,7 +52,7 @@ class Calc(QtGui.QMainWindow, Ui_MainWindow):
         self.deleteAction.triggered.connect(self.lineEdit.backspace)
         self.addAction(self.deleteAction)
         self.equalsAction = QtGui.QAction(self)
-        self.equalsAction.setShortcut('Enter')
+        self.equalsAction.setShortcuts(['Return','Enter'])
         self.equalsAction.triggered.connect(self.equalsClicked)
         self.addAction(self.equalsAction)
 
@@ -90,10 +90,14 @@ class Calc(QtGui.QMainWindow, Ui_MainWindow):
 
     def insertText(self, text):
         if self.clear_text :
-            self.lineEdit.setText(text)
+            try:
+                int(text)
+                self.lineEdit.clear()
+            except:
+                pass
             self.clear_text = False
-        else:
-            self.lineEdit.insert(text)
+        
+        self.lineEdit.insert(text)
 
 
     def clearAll(self):
