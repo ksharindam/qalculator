@@ -11,7 +11,7 @@ Changes :
         Now it can remember and insert previous answer
         Both enter buttons gives answer
 ...........................................................................
-|   Copyright (C) 2017 Arindam Chaudhuri <ksharindam@gmail.com>            |
+|   Copyright (C) 2017-2018 Arindam Chaudhuri <ksharindam@gmail.com>            |
 |                                                                          |
 |   This program is free software: you can redistribute it and/or modify   |
 |   it under the terms of the GNU General Public License as published by   |
