@@ -8,10 +8,10 @@ Debian Dependency = python-qt4
 
 Description = A simple Calculator with LCD Display
 Changes :
-        Now it can remember and insert previous answer
-        Both enter buttons gives answer
+        Added scientific mode
+
 ...........................................................................
-|   Copyright (C) 2017-2018 Arindam Chaudhuri <ksharindam@gmail.com>            |
+|   Copyright (C) 2017-2018 Arindam Chaudhuri <ksharindam@gmail.com>       |
 |                                                                          |
 |   This program is free software: you can redistribute it and/or modify   |
 |   it under the terms of the GNU General Public License as published by   |
@@ -28,6 +28,6 @@ Changes :
 ...........................................................................
 """
 # TODO: 
-# FIXME : 
+# FIXME : change deg and rad unit in sin, tan etc functions
 
-__version__ = '1.4.5'
+__version__ = '2.0'

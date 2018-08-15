@@ -1,6 +1,6 @@
 Qalculator
 ==========
-A simple Calculator written in PyQt4
+A simple and scientific Calculator written in PyQt4
 
 **Dependency** = python2.7, python-qt4 
 
@@ -8,7 +8,7 @@ Description
 -----------
 
 | This is a very simple calculator.
-| Add, substract, multiply, divide numbers.
+| It has also scientific mode functions (sin, cos, log, ln)
 | View the answer in LCD display like widget.
 
 Installation
@@ -35,4 +35,10 @@ To run after installing, type command..
   
 ``$ ./run.sh``
 
+Screenshots
+-----------
+| Simple Calculator Mode
+.. image:: files/Simple.png
 
+| Scientific Calculator Mode
+.. image:: files/Scientific.png
