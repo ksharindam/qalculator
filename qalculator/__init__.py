@@ -8,7 +8,8 @@ Debian Dependency = python-qt4
 
 Description = A simple Calculator with LCD Display
 Changes :
-        Added scientific mode
+v2.1     angle can be set to degree or radian mode
+v2.0     Added scientific mode
 
 ...........................................................................
 |   Copyright (C) 2017-2018 Arindam Chaudhuri <ksharindam@gmail.com>       |
@@ -28,6 +29,5 @@ Changes :
 ...........................................................................
 """
 # TODO: 
-# FIXME : change deg and rad unit in sin, tan etc functions
 
-__version__ = '2.0'
+__version__ = '2.1'

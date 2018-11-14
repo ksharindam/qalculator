@@ -7,6 +7,18 @@ from ui_window import Ui_MainWindow
 
 utf8 = lambda x : unicode(QtCore.QString.fromUtf8(x))
 
+RADIAN = False
+# cube root function
+cbrt = lambda x : x**(1.0/3)
+# Adjustments for degree and radian modes
+rad =       lambda x : x if RADIAN else x*pi/180
+sine =      lambda x : sin(rad(x))
+cosine =    lambda x : cos(rad(x))
+tangent =   lambda x : tan(rad(x))
+angle =     lambda x : x if RADIAN else x*180/pi
+asine =     lambda x : angle(asin(x))
+acosine =   lambda x : angle(acos(x))
+atangent =  lambda x : angle(atan(x))
 
 class Window(QtGui.QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -21,8 +33,17 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
         self.ans = ''
 
     def initUi(self):
+        self.modeActionGrp = QtGui.QActionGroup(self)
+        self.modeActionGrp.addAction(self.actionSimple)
+        self.modeActionGrp.addAction(self.actionScientific)
         self.actionSimple.triggered.connect(self.simpleMode)
         self.actionScientific.triggered.connect(self.scientificMode)
+        self.angleActionGrp = QtGui.QActionGroup(self)
+        self.angleActionGrp.addAction(self.actionDegree)
+        self.angleActionGrp.addAction(self.actionRadian)
+        self.actionDegree.triggered.connect(self.degreeMode)
+        self.actionRadian.triggered.connect(self.radianMode)
+
         self.btnGrp = QtGui.QButtonGroup(self)
         btns = [self.b0, self.b1, self.b2, self.b3, self.b4, self. b5, self.b6, self.b7,
                 self.b8, self.b9, self.point, self.startbracket, self.endbracket, self.plus,
@@ -95,9 +116,15 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
     def scientificMode(self):
         self.scientificWidget.show()
 
+    def degreeMode(self):
+        global RADIAN
+        RADIAN = False
+
+    def radianMode(self):
+        global RADIAN
+        RADIAN = True
+
 #------------------- Process Expression -------------------------
-# cube root function
-cbrt = lambda x : x**(1.0/3)
 
 def addMultSign(matchobj):
     ''' inserts * sign between num and bracket.
@@ -124,6 +151,7 @@ reg_bracket = re.compile('(\d(\(|[a-z]))|(\)\d)')
 reg_constant = re.compile('((pi)|e)(\d)')
 reg_func = re.compile('((log)|(ln)|(sin)|(cos)|(tan)|(sqrt)|(cbrt))(\d+\.\d+)')
 
+
 def processExpression(expr):
     # Convert integers to float before evaluation to improve accuracy
     expr = reg_number.sub(toFloat, expr)
@@ -134,8 +162,10 @@ def processExpression(expr):
     expr = reg_bracket.sub(addMultSign, expr)
     expr = reg_constant.sub(replaceConst, expr)
     expr = reg_func.sub(toFunc, expr)
-    expr = expr.replace('log', 'log10')
-    expr = expr.replace('ln', 'log')
+    items =        ['log', 'ln', 'sin', 'cos', 'tan']
+    replacements = ['log10', 'log', 'sine', 'cosine', 'tangent']
+    for i in range(len(items)):
+        expr = expr.replace(utf8(items[i]), replacements[i])
     return expr
 
 def wait(millisec):

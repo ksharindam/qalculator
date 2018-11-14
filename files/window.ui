@@ -19,8 +19,11 @@
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QLCDNumber" name="lcd">
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(161, 236, 143);</string>
+         <string notr="true">background-color: rgb(200, 230, 234);</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::Panel</enum>
@@ -562,16 +565,52 @@
     <addaction name="actionSimple"/>
     <addaction name="actionScientific"/>
    </widget>
+   <widget class="QMenu" name="menuAngle">
+    <property name="title">
+     <string>Angle</string>
+    </property>
+    <addaction name="actionDegree"/>
+    <addaction name="actionRadian"/>
+   </widget>
    <addaction name="menuMode"/>
+   <addaction name="menuAngle"/>
   </widget>
   <action name="actionSimple">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Simple</string>
    </property>
   </action>
   <action name="actionScientific">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Scientific</string>
+   </property>
+  </action>
+  <action name="actionDegree">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Degree</string>
+   </property>
+  </action>
+  <action name="actionRadian">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Radian</string>
    </property>
   </action>
  </widget>
