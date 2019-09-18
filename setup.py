@@ -1,10 +1,8 @@
-#!/usr/bin/env python
-
 from setuptools import setup
 from qalculator import __version__
 
 def readme():
-    with open('README.rst') as f:
+    with open('README.md') as f:
         return f.read()
 
 setup(
@@ -12,6 +10,7 @@ setup(
       version=__version__,
       description='A simple Calculator written in PyQt4',
       long_description=readme(),
+      long_description_content_type = 'text/markdown',
       keywords='pyqt pyqt4 calculator',
       url='http://github.com/ksharindam/qalculator',
       author='Arindam Chaudhuri',
@@ -23,7 +22,7 @@ setup(
       'Environment :: X11 Applications :: Qt',
       'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
       'Operating System :: POSIX :: Linux',
-      'Programming Language :: Python :: 2.7',
+      'Programming Language :: Python :: 3.7',
       ],
       packages=['qalculator'],
       entry_points={

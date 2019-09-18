@@ -1,18 +1,18 @@
-#!/usr/bin/env python
 """
 Name = Qalculator
 Executable Command = qalculator
 Package Name = qalculator
 Python Module Name = qaculator
-Debian Dependency = python-qt4
+Debian Dependency = python3-pyqt4
 
 Description = A simple Calculator with LCD Display
 Changes :
+v3.0     ported from python2 to python3
 v2.1     angle can be set to degree or radian mode
 v2.0     Added scientific mode
 
 ...........................................................................
-|   Copyright (C) 2017-2018 Arindam Chaudhuri <ksharindam@gmail.com>       |
+|   Copyright (C) 2017-2019 Arindam Chaudhuri <ksharindam@gmail.com>       |
 |                                                                          |
 |   This program is free software: you can redistribute it and/or modify   |
 |   it under the terms of the GNU General Public License as published by   |
@@ -28,6 +28,6 @@ v2.0     Added scientific mode
 |   along with this program.  If not, see <http://www.gnu.org/licenses/>.  |
 ...........................................................................
 """
-# TODO: 
+# TODO:
 
-__version__ = '2.1'
+__version__ = '3.0'

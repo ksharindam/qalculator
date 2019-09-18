@@ -1,11 +1,16 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import sys, re
+import os, sys, re
 from math import *
 from PyQt4 import QtCore, QtGui
+
+sys.path.append(os.path.dirname(__file__))
+
 from ui_window import Ui_MainWindow
 
-utf8 = lambda x : unicode(QtCore.QString.fromUtf8(x))
+# python3 always returns str instead of QString
+# convert byte string to unicode str
+#utf8 = lambda x : x.decode('utf-8')
 
 RADIAN = False
 # cube root function
@@ -76,12 +81,12 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
 
     def onBtnClick(self, btn):
         btnId = self.btnGrp.id(btn)
-        char = utf8( self.chars[abs(btnId)-2] )
+        char = self.chars[abs(btnId)-2]
         self.insertText(char)
 
     def equalsClicked(self):
-        expr = processExpression(unicode(self.lineEdit.text()))
-        print expr
+        expr = processExpression(self.lineEdit.text())
+        print(expr)
         try:
             self.ans = eval(expr)
             self.lcd.display(self.ans)
@@ -90,7 +95,7 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
             self.lcd.display('E')
 
     def insertAns(self):
-        self.insertText(str(self.ans))
+        self.insertText(self.ans)
 
     def insertText(self, text):
         if self.clear_text :
@@ -100,7 +105,7 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
             except:
                 pass
             self.clear_text = False
-        
+
         self.lineEdit.insert(text)
 
 
@@ -158,14 +163,14 @@ def processExpression(expr):
     items =        ['sin⁻¹', 'cos⁻¹', 'tan⁻¹', '√', '∛', 'π', '^']
     replacements = ['asin', 'acos', 'atan', 'sqrt', 'cbrt', 'pi', '**']
     for i in range(len(items)):
-        expr = expr.replace(utf8(items[i]), replacements[i])
+        expr = expr.replace(items[i], replacements[i])
     expr = reg_bracket.sub(addMultSign, expr)
     expr = reg_constant.sub(replaceConst, expr)
     expr = reg_func.sub(toFunc, expr)
     items =        ['log', 'ln', 'sin', 'cos', 'tan']
     replacements = ['log10', 'log', 'sine', 'cosine', 'tangent']
     for i in range(len(items)):
-        expr = expr.replace(utf8(items[i]), replacements[i])
+        expr = expr.replace(items[i], replacements[i])
     return expr
 
 def wait(millisec):
