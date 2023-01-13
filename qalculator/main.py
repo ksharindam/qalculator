@@ -2,15 +2,13 @@
 # -*- coding: utf-8 -*-
 import os, sys, re
 from math import *
-from PyQt4 import QtCore, QtGui
+from PyQt5.QtCore import QEventLoop, QTimer
+from PyQt5.QtWidgets import QApplication, QMainWindow, QAction, QActionGroup, QButtonGroup
 
 sys.path.append(os.path.dirname(__file__))
 
 from ui_window import Ui_MainWindow
 
-# python3 always returns str instead of QString
-# convert byte string to unicode str
-#utf8 = lambda x : x.decode('utf-8')
 
 RADIAN = False
 # cube root function
@@ -25,12 +23,12 @@ asine =     lambda x : angle(asin(x))
 acosine =   lambda x : angle(acos(x))
 atangent =  lambda x : angle(atan(x))
 
-class Window(QtGui.QMainWindow, Ui_MainWindow):
+class Window(QMainWindow, Ui_MainWindow):
     def __init__(self):
         self.chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '(', ')',
                         '+', '-', '*', '/', '√', 'sin', 'cos', 'tan', 'sin⁻¹', 'cos⁻¹',
                         'tan⁻¹', 'log', '10^', 'ln', 'e^', '∛', '^', 'π', 'e']
-        QtGui.QMainWindow.__init__(self)
+        QMainWindow.__init__(self)
         self.setupUi(self)
         self.initUi()
         self.simpleMode()
@@ -38,18 +36,18 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
         self.ans = ''
 
     def initUi(self):
-        self.modeActionGrp = QtGui.QActionGroup(self)
+        self.modeActionGrp = QActionGroup(self)
         self.modeActionGrp.addAction(self.actionSimple)
         self.modeActionGrp.addAction(self.actionScientific)
         self.actionSimple.triggered.connect(self.simpleMode)
         self.actionScientific.triggered.connect(self.scientificMode)
-        self.angleActionGrp = QtGui.QActionGroup(self)
+        self.angleActionGrp = QActionGroup(self)
         self.angleActionGrp.addAction(self.actionDegree)
         self.angleActionGrp.addAction(self.actionRadian)
         self.actionDegree.triggered.connect(self.degreeMode)
         self.actionRadian.triggered.connect(self.radianMode)
 
-        self.btnGrp = QtGui.QButtonGroup(self)
+        self.btnGrp = QButtonGroup(self)
         btns = [self.b0, self.b1, self.b2, self.b3, self.b4, self. b5, self.b6, self.b7,
                 self.b8, self.b9, self.point, self.startbracket, self.endbracket, self.plus,
                 self.minus, self.multiply, self.divide, self.root, self.sin, self.cos,
@@ -60,21 +58,21 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
         self.btnGrp.buttonClicked.connect(self.onBtnClick)
         self.equals.clicked.connect(self.equalsClicked)
         self.clrAll.clicked.connect(self.clearAll)
-        self.deleteAction = QtGui.QAction(self)
+        self.deleteAction = QAction(self)
         self.deleteAction.setShortcut('Backspace')
         self.deleteAction.triggered.connect(self.lineEdit.backspace)
         self.addAction(self.deleteAction)
-        self.equalsAction = QtGui.QAction(self)
+        self.equalsAction = QAction(self)
         self.equalsAction.setShortcuts(['Return','Enter'])
         self.equalsAction.triggered.connect(self.equalsClicked)
         self.addAction(self.equalsAction)
 
-        self.insertAnsAction = QtGui.QAction(self)
+        self.insertAnsAction = QAction(self)
         self.insertAnsAction.setShortcut('A')
         self.insertAnsAction.triggered.connect(self.insertAns)
         self.addAction(self.insertAnsAction)
 
-        self.quitAction = QtGui.QAction(self)
+        self.quitAction = QAction(self)
         self.quitAction.setShortcut('Esc')
         self.quitAction.triggered.connect(self.close)
         self.addAction(self.quitAction)
@@ -140,26 +138,16 @@ def addMultSign(matchobj):
 def replaceConst(obj):
     return obj.group(1) + '*' + obj.group(3)
 
-def toFloat(matchobj):
-    ''' Converts all integers to float in re match object '''
-    num = matchobj.group()
-    if '.' not in num: num = num+'.0'
-    elif num.startswith('.'):
-        num = '0'+num
-    return num
-
 def toFunc(obj):
     return obj.group(1) + '(' + obj.group(9) + ')'
 
 reg_number = re.compile('([\d]+([.][\d]+)?)|([.][\d]+)')
 reg_bracket = re.compile('(\d(\(|[a-z]))|(\)\d)')
 reg_constant = re.compile('((pi)|e)(\d)')
-reg_func = re.compile('((log)|(ln)|(sin)|(cos)|(tan)|(sqrt)|(cbrt))(\d+\.\d+)')
+reg_func = re.compile('((log)|(ln)|(sin)|(cos)|(tan)|(sqrt)|(cbrt))(\d*\.?\d+)')
 
 
 def processExpression(expr):
-    # Convert integers to float before evaluation to improve accuracy
-    expr = reg_number.sub(toFloat, expr)
     items =        ['sin⁻¹', 'cos⁻¹', 'tan⁻¹', '√', '∛', 'π', '^']
     replacements = ['asin', 'acos', 'atan', 'sqrt', 'cbrt', 'pi', '**']
     for i in range(len(items)):
@@ -174,12 +162,12 @@ def processExpression(expr):
     return expr
 
 def wait(millisec):
-    loop = QtCore.QEventLoop()
-    QtCore.QTimer.singleShot(millisec, loop.quit)
+    loop = QEventLoop()
+    QTimer.singleShot(millisec, loop.quit)
     loop.exec_()
 
 def main():
-    app = QtGui.QApplication(sys.argv)
+    app = QApplication(sys.argv)
     calc = Window()
     calc.show()
     sys.exit(app.exec_())

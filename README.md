@@ -1,8 +1,6 @@
 # Qalculator
 
-A simple and scientific Calculator written in PyQt4  
-
-**Dependency** = python3, python3-pyqt4  
+A simple and scientific Calculator written in PyQt5  
 
 ### Description
 
@@ -11,9 +9,11 @@ It has also scientific mode functions (sin, cos, log, ln).
 View the answer in LCD display like widget.  
 
 ### Installation
+First Install dependencies...  
+* python3  
+* python3-pyqt5  
 
-
-To Install qalculator open terminal inside qalculator-master directory.  
+To Install qalculator open terminal inside project root directory.  
 And then run following command..  
 `$ sudo pip3 install .`  
 
@@ -24,14 +24,9 @@ To uninstall run..
 
 ### Usage
 
-To run after installing, type command..  
+To run after installing, launch from application menu or in commandline type command..  
  
 `$ qalculator`  
-
-If you want to run the calculator without/before installing, then  
-Open terminal and change directory to qalculator-master and run  
-  
-`$ ./run.sh`  
 
 ### Screenshots
 

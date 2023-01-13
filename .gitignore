@@ -7,5 +7,7 @@ __pycache__/
 # User created
 cache/
 debian/
+build/
 dist/
 *.egg-info/
+
