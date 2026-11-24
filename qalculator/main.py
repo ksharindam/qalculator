@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 import os, sys, re
 from math import *
-from PyQt5.QtCore import QEventLoop, QTimer
-from PyQt5.QtWidgets import QApplication, QMainWindow, QAction, QActionGroup, QButtonGroup
+from PyQt6.QtCore import QEventLoop, QTimer
+from PyQt6.QtGui import QAction, QActionGroup
+from PyQt6.QtWidgets import QApplication, QMainWindow, QButtonGroup
 
 sys.path.append(os.path.dirname(__file__))
 
@@ -86,7 +87,8 @@ class Window(QMainWindow, Ui_MainWindow):
         expr = processExpression(self.lineEdit.text())
         print(expr)
         try:
-            self.ans = eval(expr)
+            ans = eval(expr)
+            self.ans = str(int(ans)) if float(int(ans))==ans else str(ans)
             self.lcd.display(self.ans)
             self.clear_text = True
         except:
@@ -164,13 +166,13 @@ def processExpression(expr):
 def wait(millisec):
     loop = QEventLoop()
     QTimer.singleShot(millisec, loop.quit)
-    loop.exec_()
+    loop.exec()
 
 def main():
     app = QApplication(sys.argv)
     calc = Window()
     calc.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
 
 if __name__ == "__main__":
     main()
