@@ -6,13 +6,13 @@ from subprocess import check_call
 # allows to run commands before 'setup.py install' (used by dh-python)
 class Install(install):
     def run(self):
-        check_call("pyuic6 -o ./qalculator/ui_mainwindow.py ./data/window.ui".split())
+        check_call("pyuic6 -o ./qalculator/ui_mainwindow.py ./data/mainwindow.ui".split())
         install.run(self)
 
 # allows to run commands before building wheel
 class BdistWheel(bdist_wheel):
     def finalize_options(self):
-        check_call("pyuic6 -o ./qalculator/ui_mainwindow.py ./data/window.ui".split())
+        check_call("pyuic6 -o ./qalculator/ui_mainwindow.py ./data/mainwindow.ui".split())
         bdist_wheel.finalize_options(self)
 
 

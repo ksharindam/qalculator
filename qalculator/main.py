@@ -8,7 +8,7 @@ from PyQt6.QtWidgets import QApplication, QMainWindow, QButtonGroup
 
 sys.path.append(os.path.dirname(__file__))
 
-from ui_window import Ui_MainWindow
+from ui_mainwindow import Ui_MainWindow
 
 
 RADIAN = False
